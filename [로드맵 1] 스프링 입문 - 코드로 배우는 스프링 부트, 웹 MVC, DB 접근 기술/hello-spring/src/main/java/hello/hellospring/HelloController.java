@@ -8,9 +8,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
-    @GetMapping("hello-string")
+    @GetMapping("hello-api")
     @ResponseBody
-    public String helloString(@RequestParam("name") String name) {
-        return "hello " + name;
+    public Hello helloApi(@RequestParam("name") String name) {
+        Hello hello = new Hello();
+        hello.setName(name);
+        return hello;
+    }
+
+    static class Hello {
+        private String name;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 }
